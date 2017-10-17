@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TournamentController@index');
+Route::get('/tournaments/{id}', 'TournamentController@show');
+
+Route::get('/users/{id}', 'UserController@show');
