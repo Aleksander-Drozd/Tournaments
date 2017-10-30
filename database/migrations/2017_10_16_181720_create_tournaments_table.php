@@ -15,6 +15,10 @@ class CreateTournamentsTable extends Migration {
             $table -> dateTime('start_date');
             $table -> dateTime('end_date');
             $table -> integer('capacity');
+            $table -> integer('min_participants');
+            $table -> string('location');
+            $table -> boolean('online');
+            $table -> string('description');
             $table -> text('statute');
             $table -> timestamps();
         });

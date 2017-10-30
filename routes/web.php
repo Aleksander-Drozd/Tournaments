@@ -12,6 +12,6 @@
 */
 
 Route::get('/', 'TournamentController@index');
-Route::get('/tournaments/{id}', 'TournamentController@show');
+Route::get('/tournaments/{tournament}', 'TournamentController@show');
 
 Route::get('/users/{id}', 'UserController@show');

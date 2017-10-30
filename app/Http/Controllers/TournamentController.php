@@ -13,7 +13,7 @@ class TournamentController extends Controller {
         return view('tournaments.index', compact('activeTournaments', 'futureTournaments'));
     }
 
-    function show($id) {//for testing purposes, needs to be changed to (Tournament $tournament)
-        return view('tournament');
+    function show(Tournament $tournament) {
+        return view('singleTournament.index', compact('tournament'));
     }
 }
