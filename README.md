@@ -22,7 +22,7 @@ In Settings -> Editor -> Code Style -> PHP
 
 In Settings -> Editor -> Code Style -> HTML
 * Indent of body tag children  
-  Do not indent children of  -> remove body
+  Do not indent children of  -> remove body and tbody
 
 
 Ctrl + Alt + L to reformat code

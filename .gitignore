@@ -11,3 +11,4 @@ npm-debug.log
 yarn-error.log
 *.vpp.bak*
 *.vpp.lck*
+_ide_helper.php
