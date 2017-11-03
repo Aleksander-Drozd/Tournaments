@@ -11,17 +11,56 @@ div.name-row {
     margin-top: 40px;
 }
 
-div.information {
+div.info-section {
+    margin-top: 30px;
+}
+
+div.info-subsection {
     margin-top: 20px;
 }
+
 .nav-link {
     color: #999999;
 }
+
 .nav-link:hover {
     color: #999999;
     background-color: #444;
 }
 
+
 p.preserve-whitespace {
     white-space: pre-wrap;
+}
+
+button.btn-join {
+    vertical-align: bottom;
+    width: 120px;
+    color: #636b6f;
+    background-color: #fff;
+}
+
+button.btn-hoover-arrow span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+button.btn-hoover-arrow span:after {
+    content: '\002b';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+button.btn-hoover-arrow:hover span {
+    padding-right: 25px;
+}
+
+button.btn-hoover-arrow:hover span:after {
+    opacity: 1;
+    right: 0;
 }
