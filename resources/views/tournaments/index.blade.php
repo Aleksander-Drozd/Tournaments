@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <link rel="stylesheet" href="/css/tournaments.css">
+    <link rel="stylesheet" href="/css/tournament.css">
 
     <div class="container">
         <h1>Active tournaments</h1>

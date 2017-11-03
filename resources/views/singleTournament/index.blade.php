@@ -1,47 +1,36 @@
 @extends('layouts.master')
 @section('content')
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="/css/tournaments.css">
+    <link rel="stylesheet" href="/css/tournament.css">
     <link rel="stylesheet" href="/css/single-tournament.css">
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 indented" >
+        <div class="row name-row">
+            <div class="col-md-12" >
                 <h1>{{$tournament -> name}}</h1>
             </div>
         </div>
-        <div class="row indented">
-            <div class="col-md-9 indented">
-                <div>
-                    <h2>Details</h2>
-                    <div class="indented">
-                        <div>
-                            <h3>Game</h3>
-                            <p>{{$tournament -> game}}</p>
-                        </div>
-                        <div>
-                            <h3>Where</h3>
-                            <p>{{$tournament -> location}}</p>
-                        </div>
-
-                        <div>
-                            <h3>When</h3>
-                            <p>Begins @ {{$tournament -> start_date}}</p>
-                            <p>Ends @ {{$tournament -> end_date}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="indented">
-                    <div>
-                        <h2>Rewards</h2>
-                    </div>
-                    <div>
-                        <h2>Points</h2>
-                    </div>
-                </div>
-            </div>
+        <div>
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#information" role="tab">Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#scores" role="tab">Scores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#matches" role="tab">Matches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#my-matches" role="tab">My matches</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="information" role="tabpanel">@include('singleTournament.partials.information')</div>
+            <div class="tab-pane fade" id="scores" role="tabpanel">@include('singleTournament.partials.scores')</div>
+            <div class="tab-pane fade" id="matches" role="tabpanel">@include('singleTournament.partials.matches')</div>
+            <div class="tab-pane fade" id="my-matches" role="tabpanel">@include('singleTournament.partials.my-matches')</div>
         </div>
     </div>
+
 @endsection
