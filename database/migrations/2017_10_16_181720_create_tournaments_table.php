@@ -9,16 +9,18 @@ class CreateTournamentsTable extends Migration {
     public function up() {
         Schema::create('tournaments', function (Blueprint $table) {
             $table -> increments('id');
+            $table -> integer('organizer_id');
             $table -> string('name');
-            $table -> string('game');
+            $table -> integer('game_id');
             $table -> string('elimination_type');
             $table -> dateTime('start_date');
             $table -> dateTime('end_date');
-            $table -> integer('capacity');
+            $table -> integer('max_participants');
             $table -> integer('min_participants');
             $table -> string('location');
             $table -> boolean('online');
             $table -> text('description');
+            $table -> text('participants_info');
             $table -> text('statute');
             $table -> timestamps();
         });
