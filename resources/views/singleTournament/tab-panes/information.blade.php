@@ -6,7 +6,7 @@
                 <div class="col-md-6">
                     <div class="info-subsection">
                         <h4>Game</h4>
-                        <p>{{$tournament -> game}}</p>
+                        <p>{{$tournament -> game -> name}}</p>
                     </div>
                     <div  class="info-subsection">
                         <h4>Elimination type</h4>

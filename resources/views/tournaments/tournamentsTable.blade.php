@@ -14,7 +14,7 @@
         @foreach($tournaments as $tournament)
             <tr>
                 <td class="name"><a href="/tournaments/{{ $tournament -> id }}">{{ $tournament -> name }}</a></td>
-                <td>{{ $tournament -> game }}</td>
+                <td>{{ $tournament -> game -> name }}</td>
                 <td>{{ $tournament -> elimination_type }}</td>
                 <td>{{ $tournament -> start_date }}</td>
                 <td>{{ $tournament -> end_date }}</td>
