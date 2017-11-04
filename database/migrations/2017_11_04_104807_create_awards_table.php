@@ -10,7 +10,7 @@ class CreateAwardsTable extends Migration {
         Schema ::create('awards', function (Blueprint $table) {
             $table -> increments('id');
             $table -> integer('place');
-            $table -> decimal('price', 10, 2);
+            $table -> string('prize');
             $table -> integer('tournament_id');
         });
     }
