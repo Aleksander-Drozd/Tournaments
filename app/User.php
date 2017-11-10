@@ -9,12 +9,41 @@ class User extends Authenticatable {
 
     use Notifiable;
 
-    public function tournaments() {
+    public function organizedTournaments() {
         return $this -> hasMany(Tournament::class, 'organizer_id');
+    }
+
+    public function activeOrganizedTournaments() {
+        return $this -> organizedTournaments()
+                     -> active()
+                     -> orderBy('start_date', 'asc');
+    }
+
+    public function pastOrganizedTournaments() {
+        return $this -> organizedTournaments()
+                     -> past()
+                     -> orderBy('start_date', 'asc');
     }
 
     public function participatesIn() {
         return $this -> belongsToMany(Tournament::class);
+    }
+
+    public function currentlyParticipatingIn() {
+        return $this -> participatesIn()
+                     -> active()
+                     -> with(['matches' => function ($query) {
+                         $query -> with(['playerOne', 'playerTwo'])
+                                -> where('player_one_id', $this -> id)
+                                -> orWhere('player_two_id', $this -> id);
+                     }])
+                     -> orderBy('start_date', 'asc');
+    }
+
+    public function participatedIn() {
+        return $this -> participatesIn()
+                     -> past()
+                     -> orderBy('start_date', 'asc');
     }
 
     public function matches() {

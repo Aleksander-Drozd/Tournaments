@@ -46,5 +46,7 @@ class Tournament extends Model {
             -> orderBy('start_date', 'asc');
     }
 
-
+    public function scopePast() {
+        return $this -> where('end_date', '<', Carbon::now() -> toDateTimeString());
+    }
 }
