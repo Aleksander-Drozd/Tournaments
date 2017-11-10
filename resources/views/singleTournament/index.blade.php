@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
     <link rel="stylesheet" href="/css/tournament.css">
     <link rel="stylesheet" href="/css/single-tournament.css">

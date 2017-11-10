@@ -8,4 +8,6 @@ Route::get('/tournaments/{tournament}', 'TournamentController@show');
 
 Route::get('/users/{id}', 'UserController@show');
 
+Route::get('/me', 'UserController@me');
+
 Auth::routes();

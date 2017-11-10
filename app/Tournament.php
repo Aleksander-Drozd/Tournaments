@@ -41,4 +41,6 @@ class Tournament extends Model {
         return $this -> where('start_date', '>', Carbon ::now() -> toDateTimeString())
             -> orderBy('start_date', 'asc');
     }
+
+
 }
