@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed playerTwo
+ * @property mixed playerOne
+ */
 class Match extends Model {
 
     public $opponent;
