@@ -34,8 +34,12 @@ class User extends Authenticatable {
                      -> active()
                      -> with(['matches' => function ($query) {
                          $query -> with(['playerOne', 'playerTwo'])
-                                -> where('player_one_id', $this -> id)
-                                -> orWhere('player_two_id', $this -> id);
+                                -> where(function($query) {
+                                    $query -> where('player_one_id', $this -> id)
+                                           -> orWhere('player_two_id', $this -> id);
+                                })
+                                -> whereNull('player_one_score')
+                                -> orderBy('datetime', 'asc');
                      }])
                      -> orderBy('start_date', 'asc');
     }
