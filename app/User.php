@@ -13,6 +13,10 @@ class User extends Authenticatable {
         return $this -> hasMany(Tournament::class, 'organizer_id');
     }
 
+    public function participatesIn() {
+        return $this -> belongsToMany(Tournament::class);
+    }
+
     public function matches() {
         return $this -> hasMany(Match::class, 'player_one_id');
     }

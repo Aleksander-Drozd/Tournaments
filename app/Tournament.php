@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tournament extends Model {
 
+    public function participants() {
+        return $this -> belongsToMany(User::class);
+    }
+
     public function game() {
         return $this -> belongsTo(Game::class);
     }
