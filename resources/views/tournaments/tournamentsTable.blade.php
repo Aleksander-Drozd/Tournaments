@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/tournament.css">
+{{--<link rel="stylesheet" href="/css/tournament.css">--}}
 <table>
     <thead>
         <tr>
