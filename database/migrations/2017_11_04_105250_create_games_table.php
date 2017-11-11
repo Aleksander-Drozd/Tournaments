@@ -10,7 +10,6 @@ class CreateGamesTable extends Migration {
         Schema::create('games', function (Blueprint $table) {
             $table -> increments('id');
             $table -> string('name');
-            $table -> integer('tournament_id');
         });
     }
 

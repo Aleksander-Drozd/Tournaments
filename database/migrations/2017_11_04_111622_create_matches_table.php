@@ -14,8 +14,8 @@ class CreateMatchesTable extends Migration {
             $table -> integer('tournament_id');
             $table -> integer('player_one_id');
             $table -> integer('player_two_id');
-            $table -> integer('player_one_score');
-            $table -> integer('player_two_score');
+            $table -> integer('player_one_score') -> nullable();
+            $table -> integer('player_two_score') -> nullable();
         });
     }
 

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tournament extends Model {
 
+    public function participants() {
+        return $this -> belongsToMany(User::class);
+    }
+
     public function game() {
         return $this -> belongsTo(Game::class);
     }
@@ -37,10 +41,17 @@ class Tournament extends Model {
                      -> orderBy('start_date', 'asc');
     }
 
+    protected function activeScope($query) {
+        $query -> where('start_date', '<=', Carbon::now() -> toDateTimeString())
+               -> where('end_date', '>=', Carbon::now() -> toDateTimeString());
+    }
+
     public function scopeFuture() {
         return $this -> where('start_date', '>', Carbon ::now() -> toDateTimeString())
             -> orderBy('start_date', 'asc');
     }
 
-
+    public function scopePast() {
+        return $this -> where('end_date', '<', Carbon::now() -> toDateTimeString());
+    }
 }
