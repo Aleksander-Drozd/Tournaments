@@ -5,7 +5,7 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <h5>Game:{{$tournament -> game -> name}}</h5>
+                <h5>Game: {{$tournament -> game -> name}}</h5>
             </div>
             <div class="col-md-3">
                 <h5>Type: {{$tournament -> elimination_type}}</h5>

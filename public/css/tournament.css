@@ -2,6 +2,7 @@
     border: 0 solid #ddd;
     border-top-width: 1px;
     border-left-width: 1px;
+    cursor: pointer;
 }
 
 #tournament h3 {
@@ -19,6 +20,7 @@
 }
 #tournamentWithMatch {
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 
