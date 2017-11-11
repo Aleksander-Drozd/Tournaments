@@ -31,7 +31,9 @@ class User extends Authenticatable {
 
     public function currentlyParticipatingIn() {
         return $this -> participatesIn()
-                     -> active()
+                     -> where(function ($query) {
+                         Tournament::activeScope($query);
+                     })
                      -> with(['matches' => function ($query) {
                          $query -> with(['playerOne', 'playerTwo'])
                                 -> where(function($query) {

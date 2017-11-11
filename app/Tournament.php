@@ -41,6 +41,11 @@ class Tournament extends Model {
                      -> orderBy('start_date', 'asc');
     }
 
+    protected function activeScope($query) {
+        $query -> where('start_date', '<=', Carbon::now() -> toDateTimeString())
+               -> where('end_date', '>=', Carbon::now() -> toDateTimeString());
+    }
+
     public function scopeFuture() {
         return $this -> where('start_date', '>', Carbon ::now() -> toDateTimeString())
             -> orderBy('start_date', 'asc');
