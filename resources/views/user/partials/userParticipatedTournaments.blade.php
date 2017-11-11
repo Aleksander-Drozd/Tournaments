@@ -5,6 +5,6 @@
     @endforeach
     <h1>Tournaments you have participated</h1>
     @foreach($past as $tournament)
-        @include('layouts.partials.tournamentWithMatch', ['$tournament' => tournament])
+        @include('layouts.partials.tournament', ['$tournament' => $tournament])
     @endforeach
 </div>
