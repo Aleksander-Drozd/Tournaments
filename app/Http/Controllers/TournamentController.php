@@ -28,8 +28,7 @@ class TournamentController extends Controller {
     }
 
     function store(StoreTournament $request) {
-
-        $tournament = Tournament ::create([
+        $tournament = Tournament::create([
             'organizer_id' => $request -> user() -> id,
             'name' => request('name'),
             'start_date' => request('start-date'),

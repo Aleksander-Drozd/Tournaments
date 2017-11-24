@@ -35,7 +35,7 @@
         <label for="location">Location</label>
         <input id="location" name="location" value="{{ old('location') }}">
         <label for="online">Online</label>
-        <input  id="online" name="online" value="1">
+        <input type="checkbox" id="online" name="online" value="1">
         <label for="description">Description</label>
         <input id="description" name="description" value="{{ old('description') }}">
         <label for="participants-info">Info for participants</label>
