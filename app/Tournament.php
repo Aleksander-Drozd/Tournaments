@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tournament extends Model {
 
+    protected $fillable = [
+        'organizer_id', 'name', 'game_id', 'elimination_type',
+        'start_date', 'end_date', 'max_participants', 'min_participants',
+        'location', 'online', 'description', 'participants_info',
+        'statute'
+    ];
+
     public function participants() {
         return $this -> belongsToMany(User::class);
     }
