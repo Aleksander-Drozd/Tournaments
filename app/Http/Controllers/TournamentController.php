@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Http\Requests\DeleteTournament;
 use App\Http\Requests\StoreTournament;
 use App\Http\Requests\UpdateTournament;
 use App\Tournament;
@@ -53,8 +54,7 @@ class TournamentController extends Controller {
         return view('tournaments.update', compact('tournament', 'games'));
     }
 
-    function update(UpdateTournament $request) {
-        $tournament = Tournament ::find(request('id'));
+    function update(Tournament $tournament, UpdateTournament $request) {
         $tournament -> update([
             'name' => request('name'),
             'start_date' => request('start-date'),
@@ -71,5 +71,10 @@ class TournamentController extends Controller {
         ]);
 
         return redirect('/tournaments/' . $tournament -> id);
+    }
+
+    function destroy(DeleteTournament $request, Tournament $tournament) {
+        $tournament -> delete();
+        return redirect('/me');
     }
 }

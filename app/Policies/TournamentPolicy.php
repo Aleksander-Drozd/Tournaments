@@ -50,6 +50,6 @@ class TournamentPolicy {
      * @return mixed
      */
     public function delete(User $user, Tournament $tournament) {
-        //
+        return $user -> id == $tournament -> organizer_id;
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="post" action="/tournaments">
+    <form method="post" action="/tournaments/{{ $tournament -> id }}">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
         <input type="hidden" name="id" value="{{ $tournament -> id }}">

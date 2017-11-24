@@ -8,7 +8,8 @@ Route::get('/tournaments/create', 'TournamentController@create');
 Route::get('/tournaments/{tournament}', 'TournamentController@show');
 Route::get('/tournaments/{tournament}/edit', 'TournamentController@edit');
 Route::post('/tournaments', 'TournamentController@store');
-Route::put('/tournaments', 'TournamentController@update');
+Route::put('/tournaments/{tournament}', 'TournamentController@update');
+Route::delete('/tournaments/{tournament}', 'TournamentController@destroy');
 
 Route::get('/users/{id}', 'UserController@show');
 Route::get('/me', 'UserController@me');
