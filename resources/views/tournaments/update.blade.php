@@ -3,10 +3,13 @@
 @section('content')
     <form method="post" action="/tournaments">
         {{ csrf_field() }}
+        {{ method_field('PUT') }}
+        <input type="hidden" name="id" value="{{ $tournament -> id }}">
+
         <label for="name">Name</label>
-        <input id="name" name="name" value="{{ old('name') }}">
+        <input id="name" name="name" value="{{ $tournament -> name }}">
         <label for="game">Game</label>
-        <select id="game" name="game" value="{{ old('game') }}">
+        <select id="game" name="game">
             @foreach($games as $game)
                 <option value="{{ $game -> id }}">{{ $game -> name }}</option>
             @endforeach
@@ -16,30 +19,26 @@
             <option value="all-on-all">All on all</option>
         </select>
         <label for="start-date">Start date</label>
-        <input type="date" id="start-date" name="start-date" value="{{ old('start-date') }}">
+        <input type="date" id="start-date" name="start-date">
         <label for="end-date">End date</label>
-        <input type="date" id="end-date" name="end-date" value="{{ old('end-date') }}">
+        <input type="date" id="end-date" name="end-date">
         <label for="min-participants">Min participants</label>
-        {{--it would be better, if these two inputs below had input=number, but i don't know how to hide
-        those unsightly arrows--}}
-        <input id="min-participants" name="min-participants" value="{{ old('min-participants') }}">
+        <input id="min-participants" name="min-participants">
         <label for="max-participants">Min participants</label>
-        <input id="max-participants" name="max-participants" value="{{ old('max-participants') }}">
+        <input id="max-participants" name="max-participants">
         <label for="location">Location</label>
-        <input id="location" name="location" value="{{ old('location') }}">
+        <input id="location" name="location">
         <label for="online">Online</label>
         <input type="checkbox" id="online" name="online" value="1">
         <label for="description">Description</label>
-        <input id="description" name="description" value="{{ old('description') }}">
+        <input id="description" name="description">
         <label for="participants-info">Info for participants</label>
-        <input id="participants-info" name="participants-info" value="{{ old('participants-info') }}">
+        <input id="participants-info" name="participants-info">
         <label for="statute">Statute</label>
-        <input id="statute" name="statute" value="{{ old('statute') }}">
-        <button>Create</button>
+        <input id="statute" name="statute">
+        <button>Update</button>
     </form>
 
-    {{-- custom error messages - https://laravel.com/docs/5.5/validation --}}
-    {{-- maybe css styles on wrong filled inputs? --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

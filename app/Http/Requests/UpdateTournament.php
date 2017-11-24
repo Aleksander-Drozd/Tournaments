@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Tournament;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTournament extends FormRequest {
+class UpdateTournament extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -12,7 +13,8 @@ class StoreTournament extends FormRequest {
      * @return bool
      */
     public function authorize() {
-        return true;
+        $tournament = Tournament::find($this -> input("id"));
+        return $tournament && $this -> user() -> can('update', $tournament);
     }
 
     /**
@@ -23,7 +25,7 @@ class StoreTournament extends FormRequest {
     public function rules() {
         return [
             'name' => 'required|alpha_num',
-            'start-date' => 'required|date|after_or_equal:now',
+            'start-date' => 'required|date|after:now',
             'end-date' => 'required|date|after_or_equal:start-date',
             'game' => 'required|integer',
             'min-participants' => 'required|integer|min:1',
