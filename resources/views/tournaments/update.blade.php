@@ -53,7 +53,7 @@
             <div class="form-group{{ $errors->has('start-date') ? ' has-error' : '' }}">
                 <label for="start-date" class="col-md-4 control-label" >Start date</label>
                 <div class="col-md-6">
-                    <input type="date" class="form-control" id="start-date" name="start-date" value="{{ $tournament -> start_date or old('start-date')}}">
+                    <input type="datetime-local" class="form-control" id="start-date" name="start-date" value="{{ $tournament -> start_date or old('start-date')}}">
                     @if ($errors->has('start-date'))
                         <span class="help-block">
                             <strong>{{ $errors->first('start-date') }}</strong>
@@ -65,8 +65,19 @@
             <div class="form-group{{ $errors->has('end-date') ? ' has-error' : '' }}">
                 <label for="end-date" class="col-md-4 control-label" >End date</label>
                 <div class="col-md-6">
-                    <input type="date" class="form-control" id="end-date" name="end-date" value="{{ $tournament -> end_date or old('end-date') }}">
-                    @if ($errors->has('end-date'))
+                    <input type="datetime" class="form-control" id="end-date" name="end-date" value="{{ $tournament -> end_date or old('end-date') }}">
+                    {{--SUMMON DAMIAN--}}
+                    <div class="form-group">
+                        <div class="input-group date" id="datetimepicker1">
+                            <input type="text" class="form-control" />	<span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $('#datetimepicker1').datetimepicker();
+                    </script>
+
+
+                @if ($errors->has('end-date'))
                         <span class="help-block">
                             <strong>{{ $errors->first('end-date') }}</strong>
                         </span>
@@ -79,8 +90,20 @@
                 {{--it would be better, if these two inputs below had input=number, but i don't know how to hide
         those unsightly arrows--}}
                 <div class="col-md-6">
-                    <input id="min-participants" class="form-control" name="min-participants" value="{{ $tournament -> min_participants or old('min-participants') }}">
-                    @if ($errors->has('min-participants'))
+                    {{--<input id="min-participants" class="form-control" name="min-participants" value="{{ $tournament -> min_participants or old('min-participants') }}">--}}
+
+
+                    <div class="input-append date form_datetime">
+                        <input size="16" type="text" value="">
+                        <span class="add-on"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    </div>
+
+                    <script type="text/javascript">
+                        $(".form_datetime").datetimepicker({
+                            format: "dd MM yyyy - hh:ii"
+                        });
+                    </script>
+                @if ($errors->has('min-participants'))
                         <span class="help-block">
                             <strong>{{ $errors->first('min-participants') }}</strong>
                         </span>
