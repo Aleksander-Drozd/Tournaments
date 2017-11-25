@@ -7,6 +7,7 @@ use App\Http\Requests\DeleteTournament;
 use App\Http\Requests\StoreTournament;
 use App\Http\Requests\UpdateTournament;
 use App\Tournament;
+use Illuminate\Support\Facades\Redirect;
 
 class TournamentController extends Controller {
 
@@ -75,6 +76,6 @@ class TournamentController extends Controller {
 
     function destroy(DeleteTournament $request, Tournament $tournament) {
         $tournament -> delete();
-        return redirect('/me');
+        return Redirect::to('/home');
     }
 }

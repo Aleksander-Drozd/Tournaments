@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Redirect;
 
 class Handler extends ExceptionHandler
 {
@@ -48,6 +49,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($this->isHttpException($exception))
+        {
+            if($exception->getStatusCode() == 404)
+                return Redirect::to('home');
+
+            if($exception->getStatusCode() == 500)
+                return Redirect::to('home');
+        }
+
         return parent::render($request, $exception);
     }
 }
