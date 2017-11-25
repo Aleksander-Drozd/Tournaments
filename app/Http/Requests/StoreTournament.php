@@ -22,17 +22,17 @@ class StoreTournament extends FormRequest {
      */
     public function rules() {
         return [
-            'name' => 'required|alpha_num',
+            'name' => 'required',
             'start-date' => 'required|date|after_or_equal:now',
             'end-date' => 'required|date|after_or_equal:start-date',
             'game' => 'required|integer',
             'min-participants' => 'required|integer|min:1',
             'max-participants' => 'required|integer|min:1',
             'elimination-type' => 'required',
-            'location' => 'required|alpha_num',
-            'description' => 'required|alpha_num',
-            'participants-info' => 'required|alpha_num',
-            'statute' => 'required|alpha_num',
+            'location' => 'required',
+            'description' => 'required',
+            'participants-info' => 'required',
+            'statute' => 'required',
         ];
     }
 }
