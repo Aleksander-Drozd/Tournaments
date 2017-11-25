@@ -13,7 +13,7 @@ class DeleteTournament extends FormRequest {
      * @return bool
      */
     public function authorize() {
-        $tournament = Tournament::find($this -> input("id"));
+        $tournament = $this -> route("tournament");
         return $tournament && $this -> user() -> can('update', $tournament);
     }
 
