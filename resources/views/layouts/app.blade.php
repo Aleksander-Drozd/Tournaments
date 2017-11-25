@@ -19,7 +19,15 @@
             <div class="container">
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a class="nav-link active" href="/home">Tournaments</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Tournaments<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/home">Show</a></li>
+                                <li><a href="/tournaments/create">Create</a></li>
+                            </ul>
+                        </li>
                     </ul>
 
 

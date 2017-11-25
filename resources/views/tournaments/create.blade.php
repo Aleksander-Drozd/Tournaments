@@ -5,7 +5,7 @@
         {{ csrf_field() }}
 
         <div class="container">
-            <h2>Creating new tournament</h2>
+            <h1 style="text-align: center; margin-bottom: 30px">Creating new tournament</h1>
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label class="col-md-4 control-label" for="name">Name</label>
                 <div class="col-md-6">
@@ -159,7 +159,7 @@
             </div>
 
             <div class="col-md-4 col-md-offset-8">
-                <button class="btn btn-lg btn-primary">Create</button>
+                <button class="btn btn-lg btn-primary" style="margin-bottom: 50px">Create</button>
             </div>
         </div>
     </form>
