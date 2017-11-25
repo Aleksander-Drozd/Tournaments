@@ -1,7 +1,18 @@
 <div id="tournament" class="redirect-row" onclick="location.href='/tournaments/{{$tournament -> id}}'">
     <div class="container">
         <div class="row">
+            <div class="col-md-8">
                 <h3>{{$tournament -> name}}</h3>
+            </div>
+            @guest
+            @else
+                @if ($tournament -> userCanModify(Auth::user()))
+                    <div class="col-md-4">
+                        <button class="btn btn-default btn-md btn-delete btn-hoover-minus"><span>Delete</span></button>
+                        <button class="btn btn-default btn-md btn-edit btn-hoover-o"><span>Edit</span></button>
+                    </div>
+                @endif
+            @endguest
         </div>
         <div class="row">
             <div class="col-md-3">

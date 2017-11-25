@@ -61,4 +61,8 @@ class Tournament extends Model {
     public function scopePast() {
         return $this -> where('end_date', '<', Carbon::now() -> toDateTimeString());
     }
+
+    public function userCanModify($user) {
+        return $this -> organizer_id == $user -> id;
+    }
 }
