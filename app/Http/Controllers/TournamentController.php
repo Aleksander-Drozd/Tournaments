@@ -50,7 +50,7 @@ class TournamentController extends Controller {
         return redirect('/tournaments/' . $tournament -> id);
     }
 
-    function edit(Tournament $tournament) {
+    function edit(Tournament $tournament, UpdateTournament $request) {
         $games = Game::all();
         return view('tournaments.update', compact('tournament', 'games'));
     }

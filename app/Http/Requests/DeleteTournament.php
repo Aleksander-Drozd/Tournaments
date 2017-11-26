@@ -14,7 +14,7 @@ class DeleteTournament extends FormRequest {
      */
     public function authorize() {
         $tournament = $this -> route("tournament");
-        return $tournament && $this -> user() -> can('update', $tournament);
+        return $tournament && $this -> user() -> can('delete', $tournament);
     }
 
     /**
