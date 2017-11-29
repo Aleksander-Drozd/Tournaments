@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Http\Requests\DeleteTournament;
+use App\Http\Requests\EditTournamentRequest;
 use App\Http\Requests\StoreTournament;
 use App\Http\Requests\UpdateTournament;
 use App\Tournament;
@@ -50,7 +51,7 @@ class TournamentController extends Controller {
         return redirect('/tournaments/' . $tournament -> id);
     }
 
-    function edit(Tournament $tournament, UpdateTournament $request) {
+    function edit(Tournament $tournament, EditTournamentRequest $request) {
         $games = Game::all();
         return view('tournaments.update', compact('tournament', 'games'));
     }
