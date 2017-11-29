@@ -179,5 +179,4 @@
             </div>
         </div>
     </form>
-    
 @endsection
