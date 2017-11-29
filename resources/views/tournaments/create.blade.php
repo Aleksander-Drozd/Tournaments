@@ -179,16 +179,5 @@
             </div>
         </div>
     </form>
-
-    {{-- custom error messages - https://laravel.com/docs/5.5/validation --}}
-    {{-- maybe css styles on wrong filled inputs? --}}
-    {{--@if ($errors->any())--}}
-        {{--<div class="alert alert-danger">--}}
-            {{--<ul>--}}
-                {{--@foreach ($errors->all() as $error)--}}
-                    {{--<li>{{ $error }}</li>--}}
-                {{--@endforeach--}}
-            {{--</ul>--}}
-        {{--</div>--}}
-    {{--@endif--}}
+    
 @endsection
