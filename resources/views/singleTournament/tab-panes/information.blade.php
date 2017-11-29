@@ -6,8 +6,7 @@
                 <div class="col-md-6">
                     <div class="info-subsection">
                         <h4>Game</h4>
-                        {{--<p>{{$tournament -> game -> name}}</p>--}}
-                        <p>Game placeholder</p>
+                        <p>{{$tournament -> game -> name}}</p>
                     </div>
                     <div  class="info-subsection">
                         <h4>Elimination type</h4>
@@ -46,21 +45,23 @@
     </div>
     <div class="col-md-3 indented">
         <div class="info-section">
-            <h2>Rewards</h2>
-            <div>
-                <ul>
-                    <li>1st Noga</li>
-                    <li>2nd Kapelusz</li>
-                    <li>3rd Hulajręka</li>
-                </ul>
-            </div>
+            @if(count($tournament -> awards) > 0)
+                <h2>Rewards</h2>
+                <div>
+                    <ul>
+                        @foreach($tournament -> awards as $award )
+                            <li>{{$award -> place . ' ' . $award -> prize}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
         <div class="info-section">
             <h2>Scoring system</h2>
             <ul>
-                <li>Won: 3 points</li>
-                <li>Draw: 1 point</li>
-                <li>Loose: 0 points</li>
+                <li>Won: {{$tournament -> game -> scoringSystem -> win}}</li>
+                <li>Draw: {{$tournament -> game -> scoringSystem -> draw}}</li>
+                <li>Loose: {{$tournament -> game -> scoringSystem -> lose}}</li>
             </ul>
         </div>
     </div>
