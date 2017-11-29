@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tournament extends Model {
 
+    protected $fillable = [
+        'organizer_id', 'name', 'game_id', 'elimination_type',
+        'start_date', 'end_date', 'max_participants', 'min_participants',
+        'location', 'online', 'description', 'participants_info',
+        'statute'
+    ];
+
     public function participants() {
         return $this -> belongsToMany(User::class);
     }
@@ -53,5 +60,9 @@ class Tournament extends Model {
 
     public function scopePast() {
         return $this -> where('end_date', '<', Carbon::now() -> toDateTimeString());
+    }
+
+    public function userCanModify($user) {
+        return $this -> organizer_id == $user -> id;
     }
 }
