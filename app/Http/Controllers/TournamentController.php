@@ -34,8 +34,8 @@ class TournamentController extends Controller {
         $tournament = Tournament::create([
             'organizer_id' => $request -> user() -> id,
             'name' => request('name'),
-            'start_date' => request('start-date'),
-            'end_date' => request('end-date'),
+            'start_date' => request('start-date') . ' ' . request('start-time'),
+            'end_date' => request('end-date') . ' ' . request('end-time'),
             'game_id' => request('game'),
             'elimination_type' => request('elimination-type'),
             'min_participants' => request('min-participants'),
@@ -58,8 +58,8 @@ class TournamentController extends Controller {
     function update(Tournament $tournament, UpdateTournament $request) {
         $tournament -> update([
             'name' => request('name'),
-            'start_date' => request('start-date'),
-            'end_date' => request('end-date'),
+            'start_date' => request('start-date') . ' ' . request('start-time'),
+            'end_date' => request('end-date') . ' ' . request('end-time'),
             'game_id' => request('game'),
             'elimination_type' => request('elimination-type'),
             'min_participants' => request('min-participants'),

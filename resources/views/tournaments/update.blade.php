@@ -52,11 +52,19 @@
 
             <div class="form-group{{ $errors->has('start-date') ? ' has-error' : '' }}">
                 <label for="start-date" class="col-md-4 control-label" >Start date</label>
-                <div class="col-md-6">
-                    <input type="datetime-local" class="form-control" id="start-date" name="start-date" value="{{ $tournament -> start_date or old('start-date')}}">
+                <div class="col-md-4">
+                    <input type="date" class="form-control" id="start-date" name="start-date" value="{{ explode(' ', $tournament -> start_date)[0] or old('start-date')}}">
                     @if ($errors->has('start-date'))
                         <span class="help-block">
                             <strong>{{ $errors->first('start-date') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="col-md-2">
+                    <input type="time" class="form-control" id="start-time" name="start-time" value="{{ explode(' ', $tournament -> start_date)[1] or old('start-time')}}">
+                    @if ($errors->has('start-time'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('start-time') }}</strong>
                         </span>
                     @endif
                 </div>
@@ -64,22 +72,19 @@
 
             <div class="form-group{{ $errors->has('end-date') ? ' has-error' : '' }}">
                 <label for="end-date" class="col-md-4 control-label" >End date</label>
-                <div class="col-md-6">
-                    <input type="datetime" class="form-control" id="end-date" name="end-date" value="{{ $tournament -> end_date or old('end-date') }}">
-                    {{--SUMMON DAMIAN--}}
-                    <div class="form-group">
-                        <div class="input-group date" id="datetimepicker1">
-                            <input type="text" class="form-control" />	<span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $('#datetimepicker1').datetimepicker();
-                    </script>
-
-
-                @if ($errors->has('end-date'))
+                <div class="col-md-4">
+                    <input type="date" class="form-control" id="end-date" name="end-date" value="{{ explode(' ', $tournament -> end_date)[0] or old('end-date')}}">
+                    @if ($errors->has('end-date'))
                         <span class="help-block">
                             <strong>{{ $errors->first('end-date') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="col-md-2">
+                    <input type="time" class="form-control" id="end-time" name="end-time" value="{{ explode(' ', $tournament -> end_date)[1] or old('end-time')}}">
+                    @if ($errors->has('end-time'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('end-time') }}</strong>
                         </span>
                     @endif
                 </div>

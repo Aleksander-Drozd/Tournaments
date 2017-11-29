@@ -50,7 +50,7 @@
 
             <div class="form-group{{ $errors->has('start-date') ? ' has-error' : '' }}">
                 <label for="start-date" class="col-md-4 control-label" >Start date</label>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <input type="date" class="form-control" id="start-date" name="start-date" value="{{ old('start-date') }}">
                     @if ($errors->has('start-date'))
                         <span class="help-block">
@@ -58,15 +58,31 @@
                         </span>
                     @endif
                 </div>
+                <div class="col-md-2">
+                    <input type="time" class="form-control" id="start-time" name="start-time" value="{{ old('start-time') }}">
+                    @if ($errors->has('start-time'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('start-time') }}</strong>
+                        </span>
+                    @endif
+                </div>
             </div>
 
             <div class="form-group{{ $errors->has('end-date') ? ' has-error' : '' }}">
                 <label for="end-date" class="col-md-4 control-label" >End date</label>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <input type="date" class="form-control" id="end-date" name="end-date" value="{{ old('end-date') }}">
                     @if ($errors->has('end-date'))
                         <span class="help-block">
                             <strong>{{ $errors->first('end-date') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="col-md-2">
+                    <input type="time" class="form-control" id="end-time" name="end-time" value="{{ old('end-time') }}">
+                    @if ($errors->has('end-time'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('end-time') }}</strong>
                         </span>
                     @endif
                 </div>
@@ -125,7 +141,7 @@
             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                 <label for="description" class="col-md-4 control-label" >Description</label>
                 <div class="col-md-6">
-                    <textarea rows="5" class="form-control" id="description" name="description" content="{{ old('description') }}"></textarea>
+                    <textarea rows="5" class="form-control" id="description" name="description">{{ old('description') }}</textarea>
                     @if ($errors->has('description'))
                         <span class="help-block">
                             <strong>{{ $errors->first('description') }}</strong>
@@ -137,7 +153,7 @@
             <div class="form-group{{ $errors->has('participants-info') ? ' has-error' : '' }}">
                 <label for="participants-info" class="col-md-4 control-label" >Info for participants</label>
                 <div class="col-md-6">
-                    <textarea rows="4" id="participants-info" class="form-control" name="participants-info" content="{{ old('participants-info') }}"> </textarea>
+                    <textarea rows="4" id="participants-info" class="form-control" name="participants-info">{{ old('participants-info') }}</textarea>
                     @if ($errors->has('participants-info'))
                         <span class="help-block">
                             <strong>{{ $errors->first('participants-info') }}</strong>
@@ -149,7 +165,7 @@
             <div class="form-group{{ $errors->has('statute') ? ' has-error' : '' }}">
                 <label for="statute" class="col-md-4 control-label" >Statute</label>
                 <div class="col-md-6">
-                    <textarea id="statute" class="form-control" rows="5" name="statute" content="{{ old('statute') }}"></textarea>
+                    <textarea id="statute" class="form-control" rows="5" name="statute">{{ old('statute') }}</textarea>
                     @if ($errors->has('statute'))
                         <span class="help-block">
                             <strong>{{ $errors->first('statute') }}</strong>
