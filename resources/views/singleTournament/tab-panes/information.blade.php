@@ -29,6 +29,14 @@
                     </div>
                 </div>
             </div>
+            @if($tournament -> participants -> contains(Auth::user()))
+            <div class="info-section">
+                <h2>Participants info</h2>
+                <div class="indented">
+                    <p class="preserve-whitespace text-justify">{{$tournament -> participants_info}}</p>
+                </div>
+            </div>
+            @endif
             <div class="info-section">
                 <h2>Description</h2>
                 <div class="indented">

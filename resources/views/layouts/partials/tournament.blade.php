@@ -35,7 +35,7 @@
                 <h5>Time: {{$tournament -> start_date}} – {{$tournament -> end_date}}</h5>
             </div>
             <div class="col-md-2">
-                <h5>Contestants: 0 | {{$tournament -> max_participants}}</h5>
+                <h5>Contestants: {{count($tournament -> participants)}} | {{$tournament -> max_participants}}</h5>
             </div>
         </div>
     </div>
