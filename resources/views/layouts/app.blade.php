@@ -79,7 +79,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </body>
-<footer class="footer text-center">
-    <p>Aleksander Drozd | Jakub Małyjasiak | 2017</p>
-</footer>
+{{--<footer class="footer text-center">--}}
+    {{--<p>Aleksander Drozd | Jakub Małyjasiak | 2017</p>--}}
+{{--</footer>--}}
 </html>

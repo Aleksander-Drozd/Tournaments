@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="post" action="/tournaments/{{ $tournament -> id }}">
+    <form class="form-horizontal" method="post" action="/tournaments/{{ $tournament -> id }}">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
 
@@ -53,7 +53,7 @@
             <div class="form-group{{ $errors->has('start-date') ? ' has-error' : '' }}">
                 <label for="start-date" class="col-md-4 control-label" >Start date</label>
                 <div class="col-md-4">
-                    <input type="date" class="form-control" id="start-date" name="start-date" value="{{ explode(' ', $tournament -> start_date)[0] or old('start-date')}}">
+                    <input type="date" class="form-control" id="start-date" name="start-date" value="{{ (new DateTime($tournament ->  start_date)) -> format('Y-m-d')}}">
                     @if ($errors->has('start-date'))
                         <span class="help-block">
                             <strong>{{ $errors->first('start-date') }}</strong>
@@ -61,7 +61,7 @@
                     @endif
                 </div>
                 <div class="col-md-2">
-                    <input type="time" class="form-control" id="start-time" name="start-time" value="{{ explode(' ', $tournament -> start_date)[1] or old('start-time')}}">
+                    <input type="time" class="form-control" id="start-time" name="start-time" value="{{ (new DateTime($tournament -> start_date)) -> format('H:i') }}">
                     @if ($errors->has('start-time'))
                         <span class="help-block">
                             <strong>{{ $errors->first('start-time') }}</strong>
@@ -73,7 +73,7 @@
             <div class="form-group{{ $errors->has('end-date') ? ' has-error' : '' }}">
                 <label for="end-date" class="col-md-4 control-label" >End date</label>
                 <div class="col-md-4">
-                    <input type="date" class="form-control" id="end-date" name="end-date" value="{{ explode(' ', $tournament -> end_date)[0] or old('end-date')}}">
+                    <input type="date" class="form-control" id="end-date" name="end-date" value="{{ (new DateTime($tournament ->  end_date)) -> format('Y-m-d')}}">
                     @if ($errors->has('end-date'))
                         <span class="help-block">
                             <strong>{{ $errors->first('end-date') }}</strong>
@@ -81,7 +81,7 @@
                     @endif
                 </div>
                 <div class="col-md-2">
-                    <input type="time" class="form-control" id="end-time" name="end-time" value="{{ explode(' ', $tournament -> end_date)[1] or old('end-time')}}">
+                    <input type="time" class="form-control" id="end-time" name="end-time" value="{{ (new DateTime($tournament -> end_date)) -> format('H:i') }}">
                     @if ($errors->has('end-time'))
                         <span class="help-block">
                             <strong>{{ $errors->first('end-time') }}</strong>
@@ -95,19 +95,8 @@
                 {{--it would be better, if these two inputs below had input=number, but i don't know how to hide
         those unsightly arrows--}}
                 <div class="col-md-6">
-                    {{--<input id="min-participants" class="form-control" name="min-participants" value="{{ $tournament -> min_participants or old('min-participants') }}">--}}
+                    <input id="min-participants" class="form-control" name="min-participants" value="{{ $tournament -> min_participants or old('min-participants') }}">
 
-
-                    <div class="input-append date form_datetime">
-                        <input size="16" type="text" value="">
-                        <span class="add-on"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                    </div>
-
-                    <script type="text/javascript">
-                        $(".form_datetime").datetimepicker({
-                            format: "dd MM yyyy - hh:ii"
-                        });
-                    </script>
                 @if ($errors->has('min-participants'))
                         <span class="help-block">
                             <strong>{{ $errors->first('min-participants') }}</strong>
