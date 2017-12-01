@@ -1,8 +1,7 @@
 <div class="row name-row">
     <div class="col-md-10" >
         <h1>{{$tournament -> name}}</h1>
-        @guest
-        @else
+        @auth
             @if ($tournament -> userCanModify(Auth::user()))
                     <a href="/tournaments/{{ $tournament -> id }}/edit">
                         <button class="btn btn-default btn-md btn-edit btn-hoover-o" style="float: left">
@@ -17,9 +16,27 @@
                         </button>
                     </form>
                 @endif
-                @endguest
+        @endauth
     </div>
-    <div class="col-md-2">
-        <button href="#" type="button" class="btn btn-default btn-lg btn-standard btn-hoover-arrow" style="margin-top: 20px;"><span>Join</span></button>
-    </div>
+        <div class="col-md-2">
+            @auth()
+                @if($tournament -> isFuture())
+                    <form method="post" action="/tournaments/{{ $tournament -> id }}/users">
+                        {{ csrf_field() }}
+                        @if(Auth::user() -> isSignedUpTo($tournament))
+                            {{ method_field('DELETE') }}
+                            <button class="btn btn-default btn-lg btn-standard btn-hoover-arrow" style="margin-top: 20px;"><span>Leave</span></button>
+                        @else
+                            <button class="btn btn-default btn-lg btn-standard btn-hoover-arrow" style="margin-top: 20px;"><span>Join</span></button>
+                        @endif
+                    </form>
+                @else
+                    @if(Auth::user() -> isSignedUpTo($tournament))
+                        You're participating in this tournament
+                    @endif
+                @endif
+            @endauth
+        </div>
+
+
 </div>

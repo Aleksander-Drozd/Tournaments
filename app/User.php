@@ -9,6 +9,11 @@ class User extends Authenticatable {
 
     use Notifiable;
 
+    public function isSignedUpTo(Tournament $tournament) {
+        return $tournament -> participants -> contains($this)
+            ? true: false;
+    }
+
     public function organizedTournaments() {
         return $this -> hasMany(Tournament::class, 'organizer_id');
     }

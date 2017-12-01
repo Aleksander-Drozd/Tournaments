@@ -11,4 +11,7 @@ Route::delete('/tournaments/{tournament}', 'TournamentController@destroy');
 Route::get('/users/{id}', 'UserController@show');
 Route::get('/me', 'UserController@me');
 
+Route::post('/tournaments/{tournament}/users', 'SignUpController@create');
+Route::delete('/tournaments/{tournament}/users', 'SignUpController@destroy');
+
 Auth::routes();
