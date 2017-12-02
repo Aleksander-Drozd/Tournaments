@@ -138,13 +138,22 @@
                 </div>
             </div>
             <div class="form-group">
+                <div class="row">
                 <label for="awards" class="col-md-4 control-label">Awards</label>
-                <div class="col-md-5">
-                    <input id="online" class="form-control">
-                </div>
+                    <div class="col-md-2">
+                        <input id="online" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <input id="online" class="form-control">
+                    </div>
                 <div class="col-md-1">
-                    <button type="button" class="btn btn-num-control btn-plus col-sm-6"><span>+</span></button>
-                    <button type="button" class="btn btn-num-control btn-minus col-sm-6"><span>-</span></button>
+                    <button type="button" class="btn btn-num-control btn-minus"><span>-</span></button>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1 col-md-offset-4">
+                        <button type="button" class="btn btn-num-control btn-plus"><span>+</span></button>
+                    </div>
                 </div>
             </div>
             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">

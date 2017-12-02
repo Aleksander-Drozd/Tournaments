@@ -50,11 +50,14 @@ button.btn-num-control {
     width: 30px;
     background: #F5F8FA;
     border-color: #ababab;
-
+    float: right;
 }
 
 button.btn-num-control:hover {
 
+}
+button.btn-plus {
+    float: left;
 }
 
 button.btn-standard {
