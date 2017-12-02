@@ -137,9 +137,18 @@
                     @endif
                 </div>
             </div>
-
+            <div class="form-group">
+                <label for="awards" class="col-md-4 control-label">Awards</label>
+                <div class="col-md-5">
+                    <input id="online" class="form-control">
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-num-control btn-plus col-sm-6"><span>+</span></button>
+                    <button type="button" class="btn btn-num-control btn-minus col-sm-6"><span>-</span></button>
+                </div>
+            </div>
             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                <label for="description" class="col-md-4 control-label" >Description</label>
+                <label for="description" class="control-label col-md-4" >Description</label>
                 <div class="col-md-6">
                     <textarea rows="5" class="form-control" id="description" name="description">{{ old('description') }}</textarea>
                     @if ($errors->has('description'))

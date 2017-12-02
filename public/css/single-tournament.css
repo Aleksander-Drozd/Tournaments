@@ -42,6 +42,21 @@ p.preserve-whitespace {
     white-space: pre-wrap;
 }
 
+button.btn-num-control {
+    margin: 8px 1px 1px;
+    padding: 0;
+    font-size: 18px;
+    height: 30px;
+    width: 30px;
+    background: #F5F8FA;
+    border-color: #ababab;
+
+}
+
+button.btn-num-control:hover {
+
+}
+
 button.btn-standard {
     vertical-align: bottom;
     width: 120px;
