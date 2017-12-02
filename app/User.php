@@ -10,8 +10,7 @@ class User extends Authenticatable {
     use Notifiable;
 
     public function isSignedUpTo(Tournament $tournament) {
-        return $tournament -> participants -> contains($this)
-            ? true: false;
+        return $tournament -> participants -> contains($this);
     }
 
     public function organizedTournaments() {
