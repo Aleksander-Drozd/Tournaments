@@ -25,9 +25,9 @@
                         {{ csrf_field() }}
                         @if(Auth::user() -> isSignedUpTo($tournament))
                             {{ method_field('DELETE') }}
-                            <button class="btn btn-default btn-lg btn-standard btn-hoover-arrow" style="margin-top: 20px;"><span>Leave</span></button>
+                            <button class="btn btn-default btn-lg btn-delete btn-hoover-arrow" style="margin-top: 20px;"><span>Leave</span></button>
                         @else
-                            <button class="btn btn-default btn-lg btn-standard btn-hoover-arrow" style="margin-top: 20px;"><span>Join</span></button>
+                            <button class="btn btn-default btn-lg btn-join btn-hoover-arrow" style="margin-top: 20px;"><span>Join</span></button>
                         @endif
                     </form>
                 @else

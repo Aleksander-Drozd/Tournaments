@@ -49,6 +49,23 @@ button.btn-standard {
     background-color: #fff;
 }
 
+button.btn-join {
+    vertical-align: bottom;
+    float: right;
+    width: 120px;
+    margin-top: 10px;
+    margin-right: 30px;
+    color: #636b6f;
+    border-color: #248232;
+    background-color: #fff;
+}
+
+button.btn-delete:hover {
+    background-color: #fff;
+    color: #636b6f;
+    border-color: #248232;
+}
+
 button.btn-delete {
     vertical-align: bottom;
     float: right;
