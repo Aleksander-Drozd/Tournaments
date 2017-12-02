@@ -52,4 +52,14 @@ class TournamentPolicy {
     public function delete(User $user, Tournament $tournament) {
         return $user -> id == $tournament -> organizer_id;
     }
+
+    public function signUp(User $user, Tournament $tournament) {
+        $participants = $tournament -> participants;
+        return $tournament -> isFuture() && !$participants -> contains($user);
+    }
+
+    public function signOut(User $user, Tournament $tournament) {
+        $participants = $tournament -> participants;
+        return $participants -> contains($user);
+    }
 }

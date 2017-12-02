@@ -14,6 +14,14 @@ class Tournament extends Model {
         'statute'
     ];
 
+    public function isActive() {
+        return Carbon::now() -> between($this -> start_date, $this -> end_date);
+    }
+
+    public function isFuture() {
+        return Carbon::now() < $this -> start_date;
+    }
+
     public function participants() {
         return $this -> belongsToMany(User::class);
     }
