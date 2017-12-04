@@ -12,6 +12,10 @@ class Match extends Model {
 
     public $opponent;
 
+    public function scopeSortedByDate($query) {
+        return $query -> orderBy('datetime', 'asc');
+    }
+
     public function playerOne() {
         return $this -> belongsTo(User::class);
     }

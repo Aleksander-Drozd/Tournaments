@@ -23,7 +23,8 @@ class TournamentController extends Controller {
     }
 
     function show(Tournament $tournament) {
-        return view('singleTournament.index', compact('tournament'));
+        $matches = $tournament -> matches() -> sortedByDate() -> get();
+        return view('singleTournament.index', compact('tournament', 'matches'));
     }
 
     function create() {
