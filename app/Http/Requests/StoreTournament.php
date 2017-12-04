@@ -33,6 +33,7 @@ class StoreTournament extends FormRequest {
             'description' => 'required',
             'participants-info' => 'required',
             'statute' => 'required',
+            'awards' => 'required',
         ];
     }
 }

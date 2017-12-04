@@ -12,6 +12,7 @@ class CreateAwardsTable extends Migration {
             $table -> integer('place');
             $table -> string('prize');
             $table -> integer('tournament_id');
+            $table -> foreign('tournament_id') -> references('id') -> on('tournaments') -> onDelete('cascade');
         });
     }
 

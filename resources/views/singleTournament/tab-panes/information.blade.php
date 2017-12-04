@@ -58,7 +58,7 @@
                 <div>
                     <ul>
                         @foreach($tournament -> awards as $award )
-                            <li>{{$award -> place . ' ' . $award -> prize}}</li>
+                            <li>{{$award -> place . '. ' . $award -> prize}}</li>
                         @endforeach
                     </ul>
                 </div>

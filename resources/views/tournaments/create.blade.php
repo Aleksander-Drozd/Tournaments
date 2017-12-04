@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <script type="text/javascript" src="/js/awardFieldsGenerator.js"></script>
     <form class="form-horizontal" method="post" action="/tournaments">
         {{ csrf_field() }}
 
@@ -137,22 +138,31 @@
                     @endif
                 </div>
             </div>
-            <div class="form-group">
-                <div class="row">
-                <label for="awards" class="col-md-4 control-label">Awards</label>
+            <div id="awards" class="form-group">
+                <div id="row0" class="row">
+                    <label for="awards" class="col-md-4 control-label">Awards</label>
                     <div class="col-md-2">
-                        <input id="online" class="form-control">
+                        <input type=number min="1" class="form-control" placeholder="Place" value="{{ old('awards.0.place') }}" name="awards[0][place]">
                     </div>
                     <div class="col-md-3">
-                        <input id="online" class="form-control">
+                        <input class="form-control" placeholder="Prize" value="{{ old('awards.0.prize') }}" name="awards[0][prize]">
                     </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-num-control btn-minus"><span>-</span></button>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-num-control btn-minus" onclick="removeAwardRow(0)"><span>-</span></button>
+                    </div>
                 </div>
-                </div>
+                <script>
+                    window.onload=function () {
+                        @if(count(old('awards')) > 1)
+                            @foreach(array_slice(old('awards'), 1) as $award)
+                              addAwardRow('{{ $award['place'] }}', '{{ $award['prize'] }}');
+                            @endforeach
+                        @endif
+                    }
+                </script>
                 <div class="row">
                     <div class="col-md-1 col-md-offset-4">
-                        <button type="button" class="btn btn-num-control btn-plus"><span>+</span></button>
+                        <button type="button" class="btn btn-num-control btn-plus" onclick="addAwardRow()"><span>+</span></button>
                     </div>
                 </div>
             </div>
