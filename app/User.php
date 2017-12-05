@@ -14,7 +14,7 @@ class User extends Authenticatable {
     }
 
     public function isTournamentOrganizer(Tournament $tournament) {
-        return $this == $tournament -> organizer;
+        return $this -> id == $tournament -> organizer_id;
     }
 
     public function organizedTournaments() {

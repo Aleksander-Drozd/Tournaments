@@ -31,6 +31,10 @@
                         <p>Begins @ {{$tournament -> start_date}}</p>
                         <p>Ends @ {{$tournament -> end_date}}</p>
                     </div>
+                    <div class="info-subsection">
+                        <h4>Started</h4>
+                        <p>{{$tournament -> started == 1 ? 'Yup' : 'Nope'}}</p>
+                    </div>
                 </div>
             </div>
             @if($tournament -> participants -> contains(Auth::user()))

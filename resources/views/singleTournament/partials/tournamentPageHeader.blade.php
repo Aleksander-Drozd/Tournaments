@@ -1,5 +1,5 @@
 <div class="row name-row">
-    <div class="col-md-10" >
+    <div class="col-md-8" >
         <h1>{{$tournament -> name}}</h1>
         @auth
             @if ($tournament -> userCanModify(Auth::user()))
@@ -32,7 +32,7 @@
                 </form>
             @else
                 @if(Auth::user() -> isSignedUpTo($tournament))
-                    You're participating in this tournament
+                    <p style="margin-top: 20px">You're participating in this tournament</p>
                 @endif
             @endif
         @endauth
