@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <script type="text/javascript" src="/js/awardFieldsGenerator.js"></script>
     <form class="form-horizontal" method="post" action="/tournaments/{{ $tournament -> id }}">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
@@ -141,6 +142,39 @@
                             <strong>{{ $errors->first('online') }}</strong>
                         </span>
                     @endif
+                </div>
+            </div>
+
+            <div id="awards" class="form-group">
+                <div id="row0" class="row">
+                    <label for="awards" class="col-md-4 control-label">Awards</label>
+                    <div class="col-md-2">
+                        <input type=number min="1" class="form-control" placeholder="Place" value="{{ $tournament -> awards['0']['place'] or old('awards.0.place') }}" name="awards[0][place]">
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control" placeholder="Prize" value="{{ $tournament -> awards['0']['prize'] or old('awards.0.prize') }}" name="awards[0][prize]">
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-num-control btn-minus" onclick="removeAwardRow(0)"><span>-</span></button>
+                    </div>
+                </div>
+                <script>
+                    window.onload=function () {
+                        @if(old('awards') != null && count(array_slice(old('awards'), 1)) > 1)
+                            @foreach(array_slice(old('awards'), 1) as $award)
+                                addAwardRow('{{ $award['place'] }}', '{{ $award['prize'] }}');
+                            @endforeach
+                        @else
+                            @foreach($tournament -> awards -> slice(1) as $award)
+                                addAwardRow('{{ $award['place'] }}', '{{ $award['prize'] }}');
+                            @endforeach
+                        @endif
+                    }
+                </script>
+                <div class="row">
+                    <div class="col-md-1 col-md-offset-4">
+                        <button type="button" class="btn btn-num-control btn-plus" onclick="addAwardRow()"><span>+</span></button>
+                    </div>
                 </div>
             </div>
 

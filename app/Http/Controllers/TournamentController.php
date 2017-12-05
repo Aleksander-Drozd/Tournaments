@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Award;
 use App\Game;
 use App\Http\Requests\DeleteTournament;
 use App\Http\Requests\EditTournamentRequest;
@@ -49,6 +50,16 @@ class TournamentController extends Controller {
             'statute' => request('statute'),
         ]);
 
+        foreach (request('awards') as $award) {
+            if ($award['prize'] && $award['place']) {
+                Award::create([
+                    'place' => $award['place'],
+                    'prize' => $award['prize'],
+                    'tournament_id' => $tournament -> id,
+                ]);
+            }
+        }
+
         return redirect('/tournaments/' . $tournament -> id);
     }
 
@@ -72,6 +83,17 @@ class TournamentController extends Controller {
             'participants_info' => request('participants-info'),
             'statute' => request('statute'),
         ]);
+
+        $tournament -> awards() -> delete();
+        foreach (request('awards') as $award) {
+            if ($award['prize'] && $award['place']) {
+                Award::create([
+                    'place' => $award['place'],
+                    'prize' => $award['prize'],
+                    'tournament_id' => $tournament -> id,
+                ]);
+            }
+        }
 
         return redirect('/tournaments/' . $tournament -> id);
     }
