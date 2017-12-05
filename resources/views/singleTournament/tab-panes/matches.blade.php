@@ -1,6 +1,6 @@
 <div>
     <ul>
-        @foreach($matches as $match)
+        @foreach($tournament -> matches as $match)
             @include('layouts.partials.match', ['matches' => $match])
         @endforeach
     </ul>

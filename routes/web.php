@@ -19,4 +19,6 @@ Route::delete('/tournaments/{tournament}/users', 'SignUpController@destroy');
 
 Route::post('/tournaments/{tournament}/start', 'TournamentController@start');
 
+Route::post('/tournaments/matches/{match}/score', 'MatchController@addScore');
+
 Auth::routes();

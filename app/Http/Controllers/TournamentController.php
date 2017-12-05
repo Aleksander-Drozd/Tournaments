@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateTournament;
 use App\Match;
 use App\Tournament;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use function Sodium\add;
 
@@ -28,7 +29,10 @@ class TournamentController extends Controller {
 
     function show(Tournament $tournament) {
         $matches = $tournament -> matches() -> sortedByDate() -> get();
-        return view('singleTournament.index', compact('tournament', 'matches'));
+        $userMatches = $matches -> filter(function ($match, $key) {
+            return $match -> playerOne == Auth::user() or $match -> playerTwo == Auth::user();
+        });
+        return view('singleTournament.index', compact('tournament', 'matches', 'userMatches'));
     }
 
     function create() {
