@@ -29,6 +29,10 @@ class Match extends Model {
         return is_null($score) ? '-' : $score;
     }
 
+    public function opponent($user) {
+        return $user -> is($this -> playerOne) ? $this -> playerTwo : $this -> playerOne;
+    }
+
     public function determineOpponentForUser(User $user) {
         $this -> opponent = $user -> is($this -> playerOne)
                                 ? $this -> playerTwo
