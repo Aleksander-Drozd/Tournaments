@@ -39,7 +39,7 @@
     </div>
     <div class="col-md-2">
         @auth()
-            @if($tournament -> isActive() and Auth::user() -> isTournamentOrganizer($tournament))
+            @if($tournament -> isActive() and !$tournament -> started and Auth::user() -> isTournamentOrganizer($tournament))
                 <form method="post" action="/tournaments/{{ $tournament -> id }}/start">
                     {{ csrf_field() }}
                     <button data-toggle="tooltip" title="Hooray!" class="btn btn-default btn-lg btn-delete btn-hoover-arrow" style="margin-top: 20px;"><span>Begin</span></button>
