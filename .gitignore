@@ -9,4 +9,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.env
+*.vpp.bak*
+*.vpp.lck*
+_ide_helper.php
