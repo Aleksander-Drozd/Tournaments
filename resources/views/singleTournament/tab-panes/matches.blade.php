@@ -1,3 +1,7 @@
 <div>
-    <h1>Work in progress...</h1>
+    <ul>
+        @foreach($matches as $match)
+            @include('layouts.partials.match', ['matches' => $match])
+        @endforeach
+    </ul>
 </div>
