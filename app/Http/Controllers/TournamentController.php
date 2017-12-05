@@ -30,7 +30,8 @@ class TournamentController extends Controller {
     function show(Tournament $tournament) {
         $matches = $tournament -> matches() -> sortedByDate() -> get();
         $userMatches = $matches -> filter(function ($match, $key) {
-            return $match -> playerOne == Auth::user() or $match -> playerTwo == Auth::user();
+            return ($match -> playerOne == Auth::user() or $match -> playerTwo == Auth::user()) and
+                $match -> player_one_score == null;
         });
         return view('singleTournament.index', compact('tournament', 'matches', 'userMatches'));
     }

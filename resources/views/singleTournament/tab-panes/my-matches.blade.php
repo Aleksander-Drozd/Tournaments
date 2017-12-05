@@ -1,7 +1,7 @@
 <div>
     @auth()
         @if(count($userMatches) > 0)
-            @include('singleTournament.partials.nextMatchFillable', ['nextMatch' => $userMatches[0]])
+            @include('singleTournament.partials.nextMatchFillable', ['nextMatch' => $userMatches -> first()])
             <h3 style="margin-top: 60px">Upcoming matches</h3>
             @foreach($userMatches as $match)
                 <div class="row">
