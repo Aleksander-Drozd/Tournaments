@@ -26,7 +26,7 @@
                     @if(Auth::user() -> isSignedUpTo($tournament))
                         {{ method_field('DELETE') }}
                         <button data-toggle="tooltip" title="Hooray!" class="btn btn-default btn-lg btn-delete btn-hoover-arrow" style="margin-top: 20px;"><span>Leave</span></button>
-                    @else
+                    @elseif($tournament -> participants -> count() < $tournament -> max_participants)
                         <button data-toggle="tooltip" title="Hooray!" class="btn btn-default btn-lg btn-join btn-hoover-arrow" style="margin-top: 20px;"><span>Join</span></button>
                     @endif
                 </form>
