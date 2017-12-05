@@ -19,6 +19,6 @@
         <div class="tab-pane in active" id="information" role="tabpanel">@include('singleTournament.tab-panes.information')</div>
         <div class="tab-pane" id="scores" role="tabpanel">@include('singleTournament.tab-panes.scores')</div>
         <div class="tab-pane" id="matches" role="tabpanel">@include('singleTournament.tab-panes.matches')</div>
-        <div class="tab-pane" id="my-matches" role="tabpanel">@include('singleTournament.tab-panes.my-matches')</div>
+        <div class="tab-pane" id="my-matches" role="tabpanel">@include('singleTournament.tab-panes.my-matches', ['matches' => $tournament -> matches])</div>
     </div>
 </div>

@@ -1,19 +1,11 @@
 <div>
     @auth()
-        Your next match should be against {{ $nextMatch -> opponent(Auth::user()) -> name }}
-        Score:
-        <form method="post" action="">
-            <label for="you">You</label>
-            <input id="you" name="you">
-            <input id=opponent name="opponent">
-            <label for="opponent">{{ $nextMatch -> opponent(Auth::user()) -> name }}</label>
-            <button>Submit</button>
-        </form>
-        <ul>
-            Next matches
+        @include('singleTournament.partials.nextMatchFillable', ['nextMatch' => $matches[0]])
+        @if(count($matches) > 0)
+            <h4>Upcoming matches</h4>
             @foreach($matches as $match)
-                <li>against {{ $match -> opponent(Auth::user()) -> name }}</li>
+                @include('layouts.partials.matchAgainst', ['match' => $match])
             @endforeach
-        </ul>
+        @endif
     @endauth
 </div>
