@@ -129,6 +129,6 @@ class TournamentController extends Controller {
         $tournament -> started = 1;
         $tournament -> update();
         $matches = $tournament -> matches;
-        return view('singleTournament.index', compact('tournament', 'matches'));
+        return Redirect ::to('/tournaments/' . $tournament -> id);
     }
 }
