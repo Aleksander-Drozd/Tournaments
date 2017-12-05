@@ -15,6 +15,7 @@ class CreateTournamentsTable extends Migration {
             $table -> string('elimination_type');
             $table -> dateTime('start_date');
             $table -> dateTime('end_date');
+            $table -> tinyInteger('started') ->default(0);
             $table -> integer('max_participants');
             $table -> integer('min_participants');
             $table -> string('location');

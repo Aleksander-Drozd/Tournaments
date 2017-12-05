@@ -9,13 +9,14 @@ class Tournament extends Model {
 
     protected $fillable = [
         'organizer_id', 'name', 'game_id', 'elimination_type',
-        'start_date', 'end_date', 'max_participants', 'min_participants',
+        'start_date', 'end_date', 'started', 'max_participants', 'min_participants',
         'location', 'online', 'description', 'participants_info',
         'statute'
     ];
 
     public function isActive() {
-        return Carbon::now() -> between($this -> start_date, $this -> end_date);
+        return Carbon::now() -> toDateString() > $this -> start_date
+            and Carbon::now() -> toDateString() < $this -> end_date;
     }
 
     public function isFuture() {

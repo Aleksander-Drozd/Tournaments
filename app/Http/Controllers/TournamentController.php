@@ -7,8 +7,11 @@ use App\Http\Requests\DeleteTournament;
 use App\Http\Requests\EditTournamentRequest;
 use App\Http\Requests\StoreTournament;
 use App\Http\Requests\UpdateTournament;
+use App\Match;
 use App\Tournament;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
+use function Sodium\add;
 
 class TournamentController extends Controller {
 
@@ -78,5 +81,26 @@ class TournamentController extends Controller {
     function destroy(DeleteTournament $request, Tournament $tournament) {
         $tournament -> delete();
         return Redirect::to('/home');
+    }
+
+    function start(Tournament $tournament) {
+        $participants = $tournament -> participants;
+        for ($i = 1; $i < $participants -> count(); $i++) {
+            $player = $participants[$i - 1];
+            $opponents = $participants -> slice($i);
+            $opponents -> each(function ($opponent) use ($player, $tournament){
+                $match = new Match();
+                $match -> player_one_id = $player -> id;
+                $match -> player_two_id = $opponent -> id;
+                $match -> tournament_id = $tournament -> id;
+                $match -> datetime = Carbon::now();
+                $match -> location = 'not specified';
+                $match -> save();
+            });
+        }
+        $tournament -> started = 1;
+        $tournament -> update();
+        $matches = $tournament -> matches;
+        return view('singleTournament.index', compact('tournament', 'matches'));
     }
 }
