@@ -1,5 +1,5 @@
 <div class="row name-row">
-    <div class="col-md-10" >
+    <div class="col-md-8" >
         <h1>{{$tournament -> name}}</h1>
         @auth
             @if ($tournament -> userCanModify(Auth::user()))
@@ -15,28 +15,36 @@
                             <span>Delete</span>
                         </button>
                     </form>
-                @endif
+            @endif
         @endauth
     </div>
-        <div class="col-md-2">
-            @auth()
-                @if($tournament -> isFuture())
-                    <form method="post" action="/tournaments/{{ $tournament -> id }}/users">
-                        {{ csrf_field() }}
-                        @if(Auth::user() -> isSignedUpTo($tournament))
-                            {{ method_field('DELETE') }}
-                            <button class="btn btn-default btn-lg btn-delete btn-hoover-arrow" style="margin-top: 20px;"><span>Leave</span></button>
-                        @else
-                            <button class="btn btn-default btn-lg btn-join btn-hoover-arrow" style="margin-top: 20px;"><span>Join</span></button>
-                        @endif
-                    </form>
-                @else
+    <div class="col-md-2">
+        @auth()
+            @if($tournament -> isFuture())
+                <form method="post" action="/tournaments/{{ $tournament -> id }}/users">
+                    {{ csrf_field() }}
                     @if(Auth::user() -> isSignedUpTo($tournament))
-                        You're participating in this tournament
+                        {{ method_field('DELETE') }}
+                        <button data-toggle="tooltip" title="Hooray!" class="btn btn-default btn-lg btn-delete btn-hoover-arrow" style="margin-top: 20px;"><span>Leave</span></button>
+                    @else
+                        <button data-toggle="tooltip" title="Hooray!" class="btn btn-default btn-lg btn-join btn-hoover-arrow" style="margin-top: 20px;"><span>Join</span></button>
                     @endif
+                </form>
+            @else
+                @if(Auth::user() -> isSignedUpTo($tournament))
+                    <p style="margin-top: 20px">You're participating in this tournament</p>
                 @endif
-            @endauth
-        </div>
-
-
+            @endif
+        @endauth
+    </div>
+    <div class="col-md-2">
+        @auth()
+            @if($tournament -> isActive() and !$tournament -> started and Auth::user() -> isTournamentOrganizer($tournament))
+                <form method="post" action="/tournaments/{{ $tournament -> id }}/start">
+                    {{ csrf_field() }}
+                    <button data-toggle="tooltip" title="Hooray!" class="btn btn-default btn-lg btn-delete btn-hoover-arrow" style="margin-top: 20px;"><span>Begin</span></button>
+                </form>
+            @endif
+        @endauth
+    </div>
 </div>

@@ -14,7 +14,11 @@
                     </div>
                     <div class="info-subsection">
                         <h4>Conditions</h4>
-                        <p>Min: {{$tournament -> min_participants}}; Max {{$tournament -> capacity}}</p>
+                        <p>Min: {{$tournament -> min_participants}}; Max {{$tournament -> max_participants}}</p>
+                    </div>
+                    <div class="info-subsection">
+                        <h4>Contestants</h4>
+                        <p>{{$tournament -> participants -> count() }}/{{$tournament -> max_participants}}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -26,6 +30,10 @@
                         <h4>When</h4>
                         <p>Begins @ {{$tournament -> start_date}}</p>
                         <p>Ends @ {{$tournament -> end_date}}</p>
+                    </div>
+                    <div class="info-subsection">
+                        <h4>Started</h4>
+                        <p>{{$tournament -> started == 1 ? 'Yup' : 'Nope'}}</p>
                     </div>
                 </div>
             </div>
