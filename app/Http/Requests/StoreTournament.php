@@ -23,7 +23,7 @@ class StoreTournament extends FormRequest {
     public function rules() {
         return [
             'name' => 'required',
-            'start-date' => 'required|date|after_or_equal:now',
+            'start-date' => 'required|date|after_or_equal:today',
             'end-date' => 'required|date|after_or_equal:start-date',
             'game' => 'required|integer',
             'min-participants' => 'required|integer|min:1',
