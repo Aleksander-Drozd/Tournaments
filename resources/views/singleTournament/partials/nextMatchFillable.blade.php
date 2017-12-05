@@ -7,8 +7,8 @@
             <h4 style="margin-bottom: 0">Score:</h4>
         </div>
         <div class="row">
-
-            <form method="post" action="">
+            <form method="post" action="/tournaments/matches/{{ $nextMatch -> id }}/score">
+                {{ csrf_field() }}
                 <label for="you">You</label>
                 <input id="you" name="you">
                 <input id=opponent name="opponent">
