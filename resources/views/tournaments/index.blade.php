@@ -12,7 +12,7 @@
             </div>
 
         @else
-            <h2>There are no active tournaments being played in the moment</h2>
+            <h2>There are no active tournaments being played at the moment</h2>
         @endif
 
         @if(count($futureTournaments) > 0)

@@ -24,6 +24,10 @@ class Match extends Model {
         return $this -> belongsTo(User::class);
     }
 
+    public function scoreOrNull($score) {
+        return is_null($score) ? '-' : $score;
+    }
+
     public function determineOpponentForUser(User $user) {
         $this -> opponent = $user -> is($this -> playerOne)
                                 ? $this -> playerTwo
